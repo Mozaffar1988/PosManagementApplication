@@ -1,0 +1,890 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<meta name="author" content="shimul" />
+
+	<title>POS Manager</title>
+    
+    <link rel="stylesheet" href="http://localhost:1587/Content/css/front-style.css">
+     <script src="http://localhost:1587/Content/js/jquery-1.5.1.js"></script>
+     <script src="http://localhost:1587/Content/js/get_pid.js"></script>
+      <script src="http://localhost:1587/Content/js/get_qty.js"></script>
+      <script src="http://localhost:1587/Content/js/get_cid.js"></script>
+      <script src="http://localhost:1587/Content/js/get_cust.js"></script>
+      
+      <script type="text/javascript" src="http://localhost:1587/Content/js/jQ.print.js"></script>
+      <script src="http://localhost:1587/Content/js/hudMsg.js"></script>
+
+    <style type="text/css">
+            /* popup_box DIV-Styles*/
+        .popup_box{
+            display:none; /* Hide the DIV */
+            position:absolute;
+            _position:absolute; /* hack for internet explorer 6 */
+            width:180px;
+            background:#FFFFFF;
+            left: 300px;
+            top: 45px;
+            z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+            margin-left: 15px;
+
+            /* additional features, can be omitted */
+            border:2px solid #118CB3;
+            padding:8px;
+            font-size:15px;
+            -moz-box-shadow: 0 0 5px #118CB3;
+            -webkit-box-shadow: 0 0 5px #118CB3;
+            box-shadow: 0 0 5px #118CB3;
+            border-radius: 5px;
+            font-size: 12px;
+
+        }
+        .popup_box:before {
+            content:"";
+            position: absolute;
+            top: 100%;
+            left: 90%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid #118CB3;
+        }
+
+        #product_select:before {
+            content:"";
+            position: absolute;
+            top: 40px;
+            left: 91%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid #118CB3;
+        }
+
+        a{
+            cursor: pointer;
+            text-decoration:none;
+        }
+
+        a.popupBoxClose{
+            font-size:14px;
+            line-height:15px;
+            right:3px;
+            top:2px;
+            position:absolute;
+            color:red;
+        }
+    </style>
+   
+</head>
+
+
+
+<body id="move_cursor">
+
+ <div class="popup_box">
+    Don't know Code? Select Product from here :
+    <a class="popupBoxClose">X</a>
+</div>
+
+<div id="header">
+<div style="float: left;"><b style="font-size: 30px; color: #FCC72F;  text-shadow: 2px 2px #8C8C00; padding-left: 20px;">Uranus-POS Manager</b></div>
+<div style="float: right; margin-right: 10px; margin-top: 8px;">You are Logged in as:  shimul
+    <a href='Dashboard/' target='_blank'><img src='http://localhost:1587/Content/img/admin_panel.png' style='margin-bottom:-8px;height:25px;'/></a>
+
+ <a href='#'><img src='http://localhost:1587/Content/img/logout.png' style='margin-bottom:-8px;height:25px; width: 100px;'/></a>
+</div>
+
+</div>
+<div id="wrapper">
+    <div id="left_wrap">
+        <div id="left_bot">
+            <table style="padding: 5px 3px 0px 5px;" id="pressKey">
+                <tr>
+                    <td >Enter BarCode :</td>
+                    <td>
+                        <input type="text" id="idHint" name="get_qty"  onkeyup="showAtQty(this.value);" onfocus="showAtQty(this.value);" style="height: 20px; width: 115px;" />
+                        
+                        <input type="hidden" name="item_no" id="item_no" value="1" />
+                        
+                    <select name="get_pid" id="pid" onchange="showAtexist(this.value);" style="height: 22px; width: 75px; text-align:left;">
+                    
+                            <option></option>
+                        @model IEnumerable<POSManagementSystem.Models.Product>
+                        @foreach (var item in Model) {
+                            <option value="@Html.DisplayFor(modelItem => item.productID)">@Html.DisplayFor(modelItem => item.productName)</option>
+                        }
+
+                        </select> 
+                        
+                       
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Enter Quantity :</td>
+                    <td>
+                        <input type="text" id="quantity" name="quantity" style="height: 20px; width: 190px;" />
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td >Payment Method</td>
+                    <td>
+                        <select id="pay_mode" style="height: 23px; width: 75px;"><option>Cash</option></select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Date</td>
+                    <td> 
+                        <input type="text" value="05/02/2014" name="sys_dt" id="sys_dt" style="height: 20px; width: 155px;" readonly="readonly" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Invoice No</td>
+                    <td>
+                        <input type="text" value="1429819" name="invoice_no" id="invoice_no" style="height: 20px; width: 155px;"  readonly="readonly" />
+                    </td>
+                </tr>
+                
+            </table>
+            
+        </div>
+        
+        <div id="left_bot">
+            
+        </div>
+    </div>
+    
+    <div id="right_wrap">
+        <div id="right_bot" class="right_border">
+        
+        
+            <table width="100%" style="padding: 5px 3px 0px 5px;">
+                <thead>
+                    <th width="45%">Item Name</th>
+                    <th width="5%">QTY.</th>
+                    <th width="15%">UNIT PRICE</th>
+                    <th width="20%">AMOUNT</th>
+                    <th width="10%">ACTION</th>
+                </thead>
+                
+                <tbody id="update">
+                    
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-right: 10px;" id="right_tab">
+            
+            <div style="width: 200px; height: 80px; margin-top: 100px; margin-left: 50px; border: 1px solid #FFFF33; float: left;">
+             <center>  <input type="text" class="grandTotal" value="0.00" style="width: 190px; height: 65px; margin: 0 auto; text-align: center; margin-top: 5px; font-size: 35px;" readonly="readonly" /></center>
+            </div>
+            
+            <div style="float: right;">
+            
+            <table class="grnd_ttl_text" style="padding: 5px 3px 0px 5px;" align="right">
+                
+                <tr>
+                    <td>Total Amount</td>
+                    <td>
+                        <input type="text" name="grandTotal" id="grandTotal" class="grandTotal" value="" readonly="readonly"  style="height: 25px; width: 145px;" />
+                    </td>
+                </tr>
+               
+                
+                <tr>
+                    <td >Discount</td>
+                    <td>
+                        <input type="text" id="discount" name="discount" onkeyup="subDiscount()" value="0" style="height: 25px; width: 145px;" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td >Net Payment</td>
+                    <td>
+                        <input type="text" id="netPayment" name="netPayment" class="grandTotal" value="0.00" readonly="readonly"  style="height: 25px; width: 145px;" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td >Received</td>
+                    <td>
+                        <input type="text" name="receive" id="receive" onkeyup="change()" onkeydown="change()" onchange="change()" style="height: 25px; width: 145px;" />
+                    </td> 
+                </tr>
+                
+                <tr>
+                    <td >Change</td>
+                    <td>
+                        <input type="text" name="change" id="change" readonly="readonly" style="height: 25px; width: 145px;" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td >Due Amount</td>
+                    <td>
+                        <input type="text" name="due_amount" id="due_amount" readonly="readonly" style="height: 25px; width: 145px;" />
+                    </td>
+                </tr>
+            
+                
+            </table>
+            </div>
+            
+            
+           
+        </div>
+        <div style="width: 100%; height: 50px; margin: 265px 0px 0px 100px;"> 
+            <input type="button" id="save_entry" name="save_entry" style="background-image: url(http://localhost:1587/Content/img/save_btn.png); width: 130px; height: 41px; margin-left: 80px;"/>
+            <input type="button" id="print_entry" name="print_entry"  style="background-image: url(http://localhost:1587/Content/img/print_btn.png); width: 130px; height: 41px;" />
+            <input type="button" id="save_entry" name="save_entry" style="background-image: url(http://localhost:1587/Content/img/cancel_btn.png); width: 130px; height: 41px;"  onclick="window.location.reload()"/>
+        </div>
+            
+        
+    </div>
+</div>
+<div id="footer">Copyright ©2014. All rights reserved. <br/>Developed by <a href="#" target="_blank">Uranus</a></div>
+
+<input type="hidden" id="print_invoice"  value="" />
+<input type="hidden" id="print_discount"  value="" />
+
+<div id="toPrint" style="margin-left:10px; margin-top: 0px; width:450px; display: none;">
+
+</div>
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+
+        //Delete Product..
+
+        $('.delete_update').live("click", function () {
+            var ID = $(this).attr("id");
+            var oldID = (ID * 1) - 1;
+            var newID = (ID * 1) + 1;
+            var dataString = 'sl_no=' + ID;
+            if (confirm("Sure you want to delete this update? There is NO undo!")) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: dataString,
+                    cache: false,
+                    success: function (html) {
+                        $(".bar" + ID).slideUp('slow', function () { $(this).remove(); });
+                        $("#qty_" + newID).blur();
+                        $("#qty_" + newID).focus();
+                        $("#qty_" + newID).mousemove();
+                        $("#qty_" + newID).mouseout();
+                        $("#qty_" + oldID).blur();
+                        $("#qty_" + oldID).focus();
+                        $("#qty_" + oldID).mousemove();
+                        $("#qty_" + oldID).mouseout();
+                    }
+                });
+
+            }
+            return false;
+        });
+
+
+
+
+
+    });
+</script>
+
+<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.calculation.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#idHint").keypress(function (event) {
+            if (event.keyCode == '13') {
+                var idHint = $("#idHint").val();
+                var quantity = $("#quantity").val();
+                //var stock = $("#stock").val();
+                //var item_no = $("#item_no").val();
+
+
+                if (idHint == "") {
+                    alert("Please Enter Product ID");
+                    return false;
+                }
+
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:1587/Home/ProductBusket/" + idHint,
+                    cache: false,
+                    success: function (html) {
+                        $("tbody#update").prepend(html);
+                        $("#quantity").focus();
+                        $("#item_no").val(idHint);
+
+                        $(".popup_box").css({ 'top': '85px', 'left': '200px' });
+                        $(".popup_box").html("Type Quantity and Press Enter");
+
+                    }
+                });
+
+            }
+
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#idHint").keypress(function (event) {
+            if (event.keyCode == '32') {
+                $("#discount").focus();
+                $(".popup_box").css({ 'top': '340px', 'left': '1160px', 'width': '150px' });
+                $('body').append("<style>.popup_box:before{ border-top: 13px solid transparent; border-right: 26px solid #118CB3; border-bottom: 13px solid transparent; left: -36px; top: 10px; }</style>");
+                $(".popup_box").html("Enter Discount amount and press 'Enter'");
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#discount").keypress(function (event) {
+            if (event.keyCode == '13') {
+                $("#receive").focus();
+                $(".popup_box").css({ 'top': '410px', 'left': '1160px', 'width': '150px' });
+                $(".popup_box").html("Enter Received amount and press 'Enter'");
+            }
+
+        });
+    });
+</script>
+
+
+<script type='text/javascript'>
+
+
+    /*
+    function keypressed(){
+    if(event.keyCode=='13'){
+        
+                     var idHint = $("#idHint").val();
+                     var quantity = $("#quantity").val();
+                     var stock = $("#stock").val();
+                     var item_no = $("#item_no").val();
+                     
+                     
+                     
+                     if(quantity==null || quantity==""){
+                        //alert("The Quantity is missing");
+                           // return false;
+                     }
+                     
+                     
+                        $.ajax({
+                            type: "POST",
+                            url: "cartProduct.php?act=create",
+                            data:"quantity="+quantity+"&idHint="+idHint+"&item_no="+item_no,
+                            cache: false,
+                            success: function(html){
+                               $("tbody#update").prepend(html);
+                               $("#quantity").focus();
+                               $("#idHint").val("");
+                               $("#item_no").val((item_no*1) + (1*1));
+                               
+                               
+                              
+                            }
+                         });
+        
+    }
+    
+                     
+                        
+    }
+    */
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#move_cursor").mouseover(function () {
+            var sum = 0;
+            $('.busket_amount').each(function (i, e) {
+                var v = parseInt($(e).val());
+                if (!isNaN(v))
+                    sum += v;
+                $("#grandTotal").val(sum);
+            });
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#quantity").keypress(function (e) {
+            if (e.keyCode == '13') {
+                var quantity = parseFloat($("#quantity").val());
+                var item_no = parseFloat($("#item_no").val());
+                //item_no = item_no - 1;
+                $("#qty_" + item_no).val(quantity);
+                $("#qty_" + item_no).keyup();
+                $("#idHint").focus();
+                $("#quantity").val("");
+                $("#stock").val("");
+                $("#idHint").val("");
+
+                var price = $("#unit_price_" + item_no).val();
+                price = price * quantity;
+                $("#amount_" + item_no).val(price);
+
+                var sum = 0;
+                $('.busket_amount').each(function (i, e) {
+                    var v = parseInt($(e).val());
+                    if (!isNaN(v))
+                        sum += v;
+                    $("#grandTotal").val(sum);
+                });
+
+                $(".popup_box").css({ 'top': '45px', 'left': '300px' });
+                $(".popup_box").html("Don't want to add more? Then Press 'Space'");
+
+            }
+
+
+        });
+    });
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    function subDiscount() {
+        var grandTotal = parseFloat($("#grandTotal").val());
+        var discount = parseFloat($("#discount").val());
+
+        var netPayment = grandTotal - discount;
+
+        $("#netPayment").val(netPayment);
+
+
+    }
+</script>
+
+<script type="text/javascript">
+    function change() {
+        var netPayment = parseFloat($("#netPayment").val());
+        var receive = parseFloat($("#receive").val());
+
+        var due_amount = netPayment - receive;
+
+        var change = receive - netPayment;
+
+        if (netPayment < receive) {
+            $("#change").val(change);
+        }
+        else {
+            $("#change").val("0.00");
+        }
+
+        if (netPayment > receive) {
+            $("#due_amount").val(due_amount);
+        }
+        else {
+            $("#due_amount").val("0.00");
+        }
+
+
+
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#receive").keypress(function (event) {
+            if (event.keyCode == '13') {
+                var productId = new Array();
+                var productName = new Array();
+                var quantity = new Array();
+                var unitPrice = new Array();
+                var amount = new Array();
+                var tax = new Array();
+
+
+                var i;
+                var temp = $("#item_no").val();
+                var cid = $("#cid").val();
+                var sys_dt = $("#sys_dt").val();
+                var invoice_no = $("#invoice_no").val();
+                var pay_mode = $("#pay_mode").val();
+
+
+                var grandTotal = $("#grandTotal").val();
+                var discount = $("#discount").val();
+                var netPayment = $("#netPayment").val();
+                var receive = $("#receive").val();
+                var change = $("#change").val();
+                var due_amount = parseFloat($("#due_amount").val());
+
+
+                if (grandTotal == null || grandTotal == "") {
+                    alert("Please add Product");
+                    $("#idHint").focus(); $(".popup_box").css({ 'top': '45px', 'left': '300px', 'width': '180px' });
+                    $('body').append("<style>.popup_box:before{  left: 90%; top: 100%;border-left: 10px solid transparent;border-right: 10px solid transparent; border-top: 20px solid #118CB3; }</style>");
+                    $(".popup_box").html("Don't know Code?Select Product from here.");
+                    return false;
+                }
+
+                if (receive == null || receive == "") {
+                    alert("Please Receive Payment");
+                    $("#receive").focus();
+                    return false;
+                }
+
+                if ((due_amount > 0) && cid == '') {
+                    alert("please Select Customer");
+                    return false;
+                }
+
+
+
+
+                for (i = 1; i < temp; i++) {
+                    productId[i] = $("#product_id_" + i).val();
+                    productName[i] = $("#name_" + i).val();
+                    quantity[i] = $("#qty_" + i).val();
+                    unitPrice[i] = $("#unit_price_" + i).val();
+                    tax[i] = $("#tax_" + i).val();
+                    amount[i] = $("#amount_" + i).val();
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "#",
+                        data: "product_id=" + productId[i] + "&name=" + productName[i] + "&quantity=" + quantity[i] + "&unit_price=" + unitPrice[i] + "&tax=" + tax[i] + "&amount=" + amount[i] + "&cid=" + cid + "&sys_dt=" + sys_dt + "&invoice_no=" + invoice_no + "&pay_mode=" + pay_mode,
+                        success: function (html) {
+
+                        }
+                    });
+
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: "invoice_no=" + invoice_no + "&grandTotal=" + grandTotal + "&discount=" + discount + "&netPayment=" + netPayment + "&receive=" + receive + "&change=" + change + "&cid=" + cid + "&due_amount=" + due_amount,
+                    cache: false,
+                    success: function (html) {
+                        $("#toPrint").css('display', 'block');
+                        $("#toPrint").prepend(html);
+                        printElem({});
+                        //alert("Data Saved Successfully!!!");
+                        $("#toPrint").css('display', 'none');
+
+                        location.reload();
+
+
+
+                    }
+                });
+
+            }
+
+            function printElem(options) {
+                $('#toPrint').printElement(options);
+            }
+
+            // HUD Messages
+            function hudMsg(type, message, timeOut) {
+
+                $('.hudmsg').remove();
+
+                if (!timeOut) {
+                    timeOut = 3000;
+                }
+
+                var timeId = new Date().getTime();
+
+                if (type != '' && message != '') {
+
+                    $('<div class="hudmsg ' + type + '" id="msg_' + timeId + '"><img src="../images/msg_' + type + '.png" alt="" />' + message + '</div>').hide().appendTo('body').fadeIn();
+
+                    var timer = setTimeout(
+                        function () {
+                            $('.hudmsg#msg_' + timeId + '').fadeOut('slow', function () {
+                                $(this).remove();
+                            });
+                        }, timeOut
+                    );
+                }
+            }
+
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#save_entry").click(function () {
+
+            var productId = new Array();
+            var productName = new Array();
+            var quantity = new Array();
+            var unitPrice = new Array();
+            var amount = new Array();
+            var tax = new Array();
+
+
+            var i;
+            var temp = $("#item_no").val();
+            var cid = $("#cid").val();
+            var sys_dt = $("#sys_dt").val();
+            var invoice_no = $("#invoice_no").val();
+            var pay_mode = $("#pay_mode").val();
+
+
+            var grandTotal = $("#grandTotal").val();
+            var discount = $("#discount").val();
+            var netPayment = $("#netPayment").val();
+            var receive = $("#receive").val();
+            var change = $("#change").val();
+            var due_amount = parseFloat($("#due_amount").val());
+
+
+            if (grandTotal == null || grandTotal == "") {
+                alert("Please add Product");
+                $("#idHint").focus();
+                return false;
+            }
+
+            if (receive == null || receive == "") {
+                alert("Please Receive Payment");
+                $("#receive").focus();
+                return false;
+            }
+
+            if ((due_amount > 0) && cid == '') {
+                alert("please Select Customer");
+                return false;
+            }
+
+
+
+
+            for (i = 1; i < temp; i++) {
+                productId[i] = $("#product_id_" + i).val();
+                productName[i] = $("#name_" + i).val();
+                quantity[i] = $("#qty_" + i).val();
+                unitPrice[i] = $("#unit_price_" + i).val();
+                tax[i] = $("#tax_" + i).val();
+                amount[i] = $("#amount_" + i).val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "#",
+                    data: "product_id=" + productId[i] + "&name=" + productName[i] + "&quantity=" + quantity[i] + "&unit_price=" + unitPrice[i] + "&tax=" + tax[i] + "&amount=" + amount[i] + "&cid=" + cid + "&sys_dt=" + sys_dt + "&invoice_no=" + invoice_no + "&pay_mode=" + pay_mode,
+                    success: function (html) {
+
+                    }
+                });
+
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "#",
+                data: "invoice_no=" + invoice_no + "&grandTotal=" + grandTotal + "&discount=" + discount + "&netPayment=" + netPayment + "&receive=" + receive + "&change=" + change + "&cid=" + cid + "&due_amount=" + due_amount,
+                cache: false,
+                success: function (html) {
+                    $("#toPrint").css('display', 'block');
+                    $("#toPrint").prepend(html);
+                    printElem({});
+                    //alert("Data Saved Successfully!!!");
+                    $("#toPrint").css('display', 'none');
+
+                    location.reload();
+
+
+
+                }
+            });
+
+
+        });
+
+
+        function printElem(options) {
+            $('#toPrint').printElement(options);
+        }
+
+        // HUD Messages
+        function hudMsg(type, message, timeOut) {
+
+            $('.hudmsg').remove();
+
+            if (!timeOut) {
+                timeOut = 3000;
+            }
+
+            var timeId = new Date().getTime();
+
+            if (type != '' && message != '') {
+
+                $('<div class="hudmsg ' + type + '" id="msg_' + timeId + '"><img src="../images/msg_' + type + '.png" alt="" />' + message + '</div>').hide().appendTo('body').fadeIn();
+
+                var timer = setTimeout(
+                    function () {
+                        $('.hudmsg#msg_' + timeId + '').fadeOut('slow', function () {
+                            $(this).remove();
+                        });
+                    }, timeOut
+                );
+            }
+        }
+
+    });
+
+
+</script>
+
+ <script>
+     $(document).ready(function () {
+
+         $("#print_entry").click(function () {
+
+             var invoice_no = $("#print_invoice").val();
+             var discount = $("#print_discount").val();
+
+
+             $.ajax({
+                 type: "POST",
+                 url: "#",
+                 data: "invoice_no=" + invoice_no + "&discount=" + discount,
+                 success: function (html) {
+                     $("#toPrint").css('display', 'block');
+                     $("#toPrint").prepend(html);
+                     printElem({});
+                     //alert("Data Saved Successfully!!!");
+                     $("#toPrint").css('display', 'none');
+
+                     location.reload();
+
+
+
+                 }
+             });
+
+
+
+
+
+         });
+
+
+         function printElem(options) {
+             $('#toPrint').printElement(options);
+         }
+     });
+</script>
+
+
+
+<script type="text/javascript">
+
+    var bIsFirebugReady = (!!window.console && !!window.console.log);
+    $(document).ready(
+		function () {
+		    // update the plug-in version
+		    $("#idPluginVersion").text($.Calculation.version);
+
+		    // bind the recalc function to the quantity fields
+		    $("input[name^=qty_]").bind("focus", recalc);
+		    $("input[name^=qty_]").bind("blur", recalc);
+		    $("input[name^=qty_]").bind("keyup", recalc);
+
+		    // run the calculation function now
+		    recalc();
+		}
+	);
+    function recalc() {
+        $("[id^=amount]").calc(
+			// the equation to use for the calculation
+			"qty * price",
+			// define the variables used in the equation, these can be a jQuery object
+			{
+			    qty: $("input[name^=qty_]"),
+			    price: $("[id^=unit_price_]")
+			},
+			// define the formatting callback, the results of the calculation are passed to this function
+			function (s) {
+			    // return the number as a dollar amount
+			    return s.toFixed(2);
+			},
+			// define the finish callback, this runs after the calculation has been complete
+			function ($this) {
+			    // sum the total of the $("[id^=amount]") selector
+			    var sum = $this.sum();
+
+			    $(".grandTotal").val(
+					// round the results to 2 digits
+					sum.toFixed(2)
+				);
+			}
+		);
+    }
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        // When site loaded, load the Popupbox First
+        loadPopupBox();
+
+        $('.popupBoxClose').click(function () {
+            unloadPopupBox();
+        });
+
+        $('#container').click(function () {
+            unloadPopupBox();
+        });
+
+        function unloadPopupBox() {	// TO Unload the Popupbox
+            $('.popup_box').fadeOut("slow");
+            $("#container").css({ // this is just for style
+                "opacity": "1"
+            });
+        }
+
+        function loadPopupBox() {	// To Load the Popupbox
+            $('.popup_box').fadeIn("slow");
+            $("#container").css({ // this is just for style
+                "opacity": "0.3"
+            });
+        }
+        /**********************************************************/
+
+        $('#pid').change(function () {
+            $(".popup_box").css({ 'top': '55px', 'left': '200px' });
+            $(".popup_box").html("Press Enter");
+        });
+        $('#customer_select').change(function () {
+            $(".popup_box").css({ 'top': '500px', 'left': '600px' });
+            $(".popup_box").html("Now you can save the entry!!!");
+        });
+
+    });
+</script>

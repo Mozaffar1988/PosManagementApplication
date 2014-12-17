@@ -1,0 +1,186 @@
+body{
+    font-family: Myriad Pro;
+    font-size: 16px;
+    background-color: #f9f2e4;
+}
+
+#header{
+    width: 990px;
+    height: 40px;
+    color: #1f07b1;
+    margin: 0 auto;
+    font-family: Myriad Pro;
+    
+}
+#header a{
+    color: black;
+}
+
+#wrapper{
+    width: 990px;
+    height: 561px;
+    margin: 0 auto;
+    margin-top: 5px;
+    position: relative;
+    /*border: 3px solid #FFFF8A;*/
+    border-radius: 10px;
+   -moz-box-shadow: 0 0 20px rgba(1, 1, 1, .5);
+   -webkit-box-shadow: 0 0 20px rgba(1, 1, 1, .5);
+   box-shadow:0 0 20px rgba(1, 1, 1, .5);
+    background-color: white;
+}
+
+
+#footer{
+    width: 990px;
+    height: 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+#footer a{
+    text-decoration: none;
+}
+
+#left_wrap{
+    width: 400px;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+#right_wrap{
+    width: 585px;
+    height: 100%;
+    position: relative;
+    float: right;
+    
+}
+
+#left_bot{
+    width: 375px;
+    height: 215px;
+    background: white;
+    border: 1px solid #E4E4E4;
+    position: relative;
+    margin: 30px 2px 0px 15px;
+    
+}
+
+
+#right_bot{
+    width: 565px;
+    height: 215px;
+    background: white;
+    border: 1px solid #E4E4E4;
+    position: relative;
+    margin: 30px 20px 0px 2px;
+    
+}
+
+.right_border td{
+     border: 1px solid #B5B5B5;
+   
+}
+
+.right_border tr:hover{
+	background-color: #E0F3A7;
+	}
+
+.grnd_ttl_text td{
+	font-weight:bold;
+	font-family:verdana;
+	text-align:right;
+
+}
+
+input, select{
+    border: 1px solid #f8b51c;
+    text-align: center;
+   
+}
+
+thead{
+    background-color: #fcc72f;
+}
+
+th{
+    font-weight: normal;
+    font-size: 12px;
+    height: 30px;
+}
+
+td{
+    padding: 12px 0px 0px 8px;
+    text-align: center;
+}
+
+#right_bot td{
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+
+#right_tab td{
+    padding: 6px 0px 0px 8px;
+    font-size: 18px;
+	color:gray;
+}
+
+#right_tab input{
+    background-color: #E8E8E8;
+    border: 1px solid #f8b51c;
+    text-align:right;
+   font-size: 18px;
+	color:red;
+}
+
+.print{
+	margin:0px 0px 0px 0px;
+	width:1000px;
+	height:auto;
+    font-family: Arial;
+    font-weight: bold;
+    
+	}
+	
+#hui .th{
+	font-size:15pt;
+	text-align:center;
+	height:20px;
+	vertical-align:top;
+	border-bottom: 2px solid black;
+	border-bottom-style: solid;
+	border-bottom-color:#000;
+	vertical-align:top;
+	border-top:thin;
+	border-top-style: solid;
+	border-top-color:#000;
+	
+	}
+
+.ttl_amnt{
+	font-family:Arial;
+	height:20px;
+	border-top: 2px solid black;
+	border-top-style: solid;
+	border-top-color:#000;
+	vertical-align:middle;
+	}
+.discount{
+	font-family:Arial;
+	text-align:right;
+	}
+.net_amnt{
+	font-family:Arial;
+	height:20px;
+	border-bottom:thin;
+	border-bottom-style: solid;
+	border-bottom-color:#000;
+	vertical-align:top;
+	border-top:thin;
+	border-top-style: solid;
+	border-top-color:#000;
+	}

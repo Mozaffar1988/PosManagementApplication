@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shdw_box">    
+<section id="content">
+  
+@model POSManagementSystem.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+   
+    <h3>
+ @Html.ActionLink("Create New", "/Create")
+</h3>
+    <h3>
+ @Html.ActionLink("Back to List", "/")
+</h3>
+<h2>Details</h2>
+        
+        <table>
+            <tr>
+            <td>
+                <label>First Name :</label> 
+	       @Html.DisplayFor(model => model.firstName)
+            @Html.ValidationMessageFor(model => model.firstName)
+            </td>
+            </tr>
+            
+             <tr>
+            <td>
+                <label>Lastname :</label>
+	        @Html.DisplayFor(model => model.lastName)
+            @Html.ValidationMessageFor(model => model.lastName)
+            </td>
+            </tr>
+            
+             <tr>
+            <td>
+                <label>Username :</label>
+	           @Html.DisplayFor(model => model.userName)
+            @Html.ValidationMessageFor(model => model.userName)
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>User Role :</label>
+	           @Html.DisplayFor(model => model.userRole)
+            @Html.ValidationMessageFor(model => model.userRole)
+            </td>
+            </tr>
+
+            
+            
+    
+    
+   
+    
+  
+
+     </section>		
+</div>

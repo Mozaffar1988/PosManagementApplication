@@ -1,0 +1,14 @@
+﻿@model POSManagementSystem.Models.Product
+
+<tr valign="" id="record" class="bar_@Html.DisplayFor(model => model.productID)">
+    
+    <td><input type='hidden' id="name_@Html.DisplayFor(model => model.productID)" name="name_@Html.DisplayFor(model => model.productID)" value='@Html.DisplayFor(model => model.productName)'/>@Html.DisplayFor(model => model.productName)</td>
+    
+    <td><input type="text" name="qty_@Html.DisplayFor(model => model.productID)"  id="qty_@Html.DisplayFor(model => model.productID)" value="" style="width: 27px; height: 20px;"/></td>
+    
+    <td><input type='hidden' id="unit_price_@Html.DisplayFor(model => model.productID)" name="unit_price_@Html.DisplayFor(model => model.productID)" value='@Html.DisplayFor(model => model.productPrice)'/>@Html.DisplayFor(model => model.productPrice)</td>
+   
+    <td><input type="text" class="busket_amount"  name="amount_@Html.DisplayFor(model => model.productID)" id="amount_@Html.DisplayFor(model => model.productID)" value="" readonly="readonly" /></td>
+    
+    <td><span class="delete_button"><a href="#" id="@Html.DisplayFor(model => model.productID)" class="delete_update" title="Delete" style="text-decoration: none; color: red;">X</a></span> </td>
+</tr>

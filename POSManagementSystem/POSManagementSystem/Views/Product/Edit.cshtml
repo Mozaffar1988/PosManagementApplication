@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model POSManagementSystem.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.productID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.productBarCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.productBarCode)
+            @Html.ValidationMessageFor(model => model.productBarCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.productName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.productName)
+            @Html.ValidationMessageFor(model => model.productName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.productPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.productPrice)
+            @Html.ValidationMessageFor(model => model.productPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createdDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.createdDate)
+            @Html.ValidationMessageFor(model => model.createdDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.updatedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.updatedDate)
+            @Html.ValidationMessageFor(model => model.updatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.createdBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.createdBy)
+            @Html.ValidationMessageFor(model => model.createdBy)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

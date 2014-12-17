@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shdw_box">    
+<section id="content">
+
+@model POSManagementSystem.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+
+    <h2>Category Entry</h2>
+        
+        <table>
+            <tr>
+            <td>
+                <label>Category Name :</label><br />
+	       @Html.EditorFor(model => model.categoryName)
+            @Html.ValidationMessageFor(model => model.categoryName)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+            
+            
+            
+        </table>
+    
+      
+       <input type="submit" class="submit" id="category_entry"  value="Entry" />
+    
+    <div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+     </section>		
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#category_entry").click(function () {
+
+            var categoryName = $("#categoryName").val();
+
+            if (categoryName == null || categoryName == "") {
+                hudMsg('error', 'Please Enter Category Name', 3000);
+                return false;
+            }
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:1587/Category/Create",
+                    data: "categoryName=" + categoryName,
+                    success: function (data) {
+
+                        //alert("Data Saved Successfully");
+                        hudMsg('success', 'Record Saved successfully', 3000);
+                        $("#categoryName").val("");
+
+                    }
+                });
+
+
+        });
+
+
+
+    });
+
+
+</script>
+
+

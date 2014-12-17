@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model POSManagementSystem.Models.Brand
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Brand</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.categoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.categoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.brandName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.brandName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createdDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createdDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createdBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createdBy)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.brandID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

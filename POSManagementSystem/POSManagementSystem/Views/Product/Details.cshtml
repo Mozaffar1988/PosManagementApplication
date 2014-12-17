@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model POSManagementSystem.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.productBarCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.productBarCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.productName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.productName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.productPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.productPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createdDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createdDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.updatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.updatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.createdBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.createdBy)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.productID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

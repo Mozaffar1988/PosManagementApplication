@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shdw_box">    
+<section id="content">
+  
+@model POSManagementSystem.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>User Edit</h2>
+        
+        <table>
+            <tr>
+            <td>
+                <label>First Name :</label><br />
+                @Html.HiddenFor(model => model.UserID)
+	       @Html.EditorFor(model => model.firstName)
+            @Html.ValidationMessageFor(model => model.firstName)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+            
+             <tr>
+            <td>
+                <label>Lastname :</label><br />
+	        @Html.EditorFor(model => model.lastName)
+            @Html.ValidationMessageFor(model => model.lastName)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+            
+             <tr>
+            <td>
+                <label>Username :</label><br />
+	           @Html.EditorFor(model => model.userName)
+            @Html.ValidationMessageFor(model => model.userName)
+	           <span class="note">*</span>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>Password :</label><br />
+	           @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+	           <span class="note">*</span>
+            </td>
+            </tr>
+
+            
+            <tr>
+            <td>
+                <label>User Role :</label><br />
+	           @{
+   List<SelectListItem> listItems= new List<SelectListItem>();
+  
+   listItems.Add(new SelectListItem
+        {
+            Text = "User",
+            Value = "user",
+        });
+   listItems.Add(new SelectListItem
+        {
+            Text = "Admin",
+            Value = "admin"
+        });
+
+   listItems.Add(new SelectListItem
+   {
+       Text = "Super Admin",
+       Value = "superadmin"
+   });
+}
+                @Html.DropDownListFor(model => model.userRole, listItems, Model.userRole)
+	           <span class="note">*</span>
+            </td>
+            </tr>
+            
+        </table>
+    
+      
+       <input type="submit" class="submit" id="user_update"  value="Update" />
+    
+    <div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+   	
+    
+  
+
+     </section>		
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#user_update").click(function () {
+            var userID = $("#UserID").val();
+            var firstName = $("#firstName").val();
+            var lastName = $("#lastName").val();
+            var userName = $("#userName").val();
+            var password = $("#password").val();
+            var userRole = $("#userRole").val();
+
+            if (firstName == null || firstName == "") {
+                hudMsg('error', 'First Name Missing', 3000);
+                return false;
+            }
+            if (lastName == null || lastName == "") {
+                hudMsg('error', 'Last Name Missing', 3000);
+                return false;
+            }
+            if (userName == null || userName == "") {
+                hudMsg('error', 'Username Missing', 3000);
+                return false;
+            }
+            if (password == null || password == "") {
+                hudMsg('error', 'Username Missing', 3000);
+                return false;
+            }
+            if (userRole == null || userRole == "") {
+                hudMsg('error', 'Username Missing', 3000);
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1587/User/Edit",
+                data: "UserID=" + userID+"&firstName=" + firstName + "&lastName=" + lastName + "&userName=" + userName + "&password=" + password + "&userRole=" + userRole,
+                success: function (data) {
+
+                    //alert("Data Saved Successfully");
+                    hudMsg('success', 'Data Updated successfully', 3000);
+                   
+                }
+            });
+
+
+        });
+
+
+
+    });
+
+
+</script>
+
+

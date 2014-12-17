@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta name="viewport" content="width=device-width" />
+		
+	<title>POS Admin</title>
+
+    <link rel="stylesheet" href="http://localhost:1587/Content/css/style.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/responsive.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/visualize.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/date_input.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/jquery.minicolors.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/jquery.wysiwyg.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/jquery.fancybox.css">
+	<link rel="stylesheet" href="http://localhost:1587/Content/css/tipsy.css">
+	
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="css/ie.css">
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+	
+	<link rel="apple-touch-icon-precomposed" href="images/ios_icon.png" />
+    
+    	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery-ui.min.js"></script>
+	
+    <script type="text/javascript" src="http://localhost:1587/Content/js/hudMsg.js"></script>
+    <script type="text/javascript" src="http://localhost:1587/Content/js/jQ.print.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/excanvas.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.visualize.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.tablesorter.js"></script>
+<!--	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.date_input.min.js"></script> -->
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.minicolors.min.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.wysiwyg.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="http://localhost:1587/Content/js/custom.js"></script>
+    
+    <script type="text/javascript" src="http://localhost:1587/Content/js/jQ.print.js"></script>
+    
+   
+	<script src="http://localhost:1587/Content/ui/jquery-1.7.1.js"></script>
+    <script src="http://localhost:1587/Content/ui/jquery.ui.core.js"></script>
+	<script src="http://localhost:1587/Content/ui/jquery.ui.widget.js"></script>
+	<script src="http://localhost:1587/Content/ui/jquery.ui.datepicker.js"></script>
+	<link rel="stylesheet" href="http://localhost:1587/Content/ui/demos.css"/>
+   <link rel="stylesheet" href="http://localhost:1587/Content/themes/base/jquery.ui.all.css">
+	
+	
+	<script>
+	$(function() {
+		$( ".datepicker" ).datepicker();
+	});
+	</script>
+
+    <style type="text/css">
+        input.text-box
+        {
+            font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+color: #333;
+padding: 7px;
+border: 1px solid #bbb;
+outline: none;
+vertical-align: middle;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+width: 300px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    
+<header>
+
+		<h1><a href="index.php">POS Management System - Admin Panel</a></h1>
+		
+		
+		<section class="userprofile">
+			<ul>
+            <li><a href="#"><img src="images/avatar.gif" alt="" />shimul</a>
+					<ul>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</li>
+			
+			</ul>
+		</section>	
+</header>
+<!-- #header ends -->
+<aside>
+
+        <ul id="nav">
+            <li><a href="http://localhost:1587/"><strong><img src="http://localhost:1587/Content/images/nav/dashboard.png" alt="" />Dashboard</strong></a></li>
+			<li><a href="#" class="collapse"><img src="http://localhost:1587/Content/images/nav/settings.png" alt="" /> Settings</a>
+    <ul>
+        <li><a href="http://localhost:1587/Category/Create">Category Entry</a></li>
+        <li><a href="http://localhost:1587/Brand/Create">Brand Entry</a></li>
+      <li><a href="http://localhost:1587/Product/Create">Product Entry</a></li>
+      <li><a href="http://localhost:1587/User/Create">User Entry</a></li>
+       
+       
+    </ul>
+</li>
+
+<li><a href="#" class="collapse"><img src="http://localhost:1587/Content/images/nav/support.png" alt="" /> Views</a>
+    <ul>
+        <li><a href="http://localhost:1587/Category/Index">Category</a></li>
+        <li><a href="http://localhost:1587/Brand/Index">Brand</a></li>
+        <li><a href="http://localhost:1587/Product/Index">Products</a></li>
+        <li><a href="http://localhost:1587/User/Index">Users</a></li>
+    </ul>
+</li>
+
+
+<li><a href="#" class="collapse"><img src="http://localhost:1587/Content/images/nav/pages.png" alt="" /> Reports</a>
+    <ul>
+        <li><a href="#">Sales Report</a></li>
+        <li><a href="#" >Total Product Report</a></li>
+        
+    </ul>
+</li>
+
+<li><a href="#"><strong><img src="http://localhost:1587/Content/images/nav/dashboard.png" alt="" /> Store Status</strong></a></li>
+
+
+
+		</ul>
+		
+</aside>		<!-- aside ends -->
+	
+     @RenderBody()
+
+	
+  
+    
+</section>		<!-- #content ends -->
+	
+	
+	
+
+</body>
+</html>

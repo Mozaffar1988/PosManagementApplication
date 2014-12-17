@@ -1,0 +1,118 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shdw_box">    
+<section id="content">
+    
+@model POSManagementSystem.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Brand Entry</h2>
+        
+        <table>
+            <tr>
+            <td>
+                <label>Select Brand :</label><br />
+	                @Html.DropDownListFor(
+                        model => model.brandID, 
+                        (IEnumerable<SelectListItem>)ViewBag.Brand)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>Product Barcode :</label><br />
+	       @Html.EditorFor(model => model.productBarCode)
+            @Html.ValidationMessageFor(model => model.productBarCode)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>Product Name :</label><br />
+	       @Html.EditorFor(model => model.productName)
+            @Html.ValidationMessageFor(model => model.productName)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>Product Price :</label><br />
+	       @Html.EditorFor(model => model.productPrice)
+            @Html.ValidationMessageFor(model => model.productPrice)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+
+            
+            
+            
+        </table>
+    
+      
+       <input type="submit" class="submit" id="product_entry"  value="Entry" />
+    
+    <div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+     </section>		
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#product_entry").click(function () {
+
+            var brandID = $("#brandID").val();
+            var productBarCode = $("#productBarCode").val();
+            var productName = $("#productName").val();
+            var productPrice = $("#productPrice").val();
+
+            if (brandID == null || brandID == "") {
+                hudMsg('error', 'Please Select Brand Name', 3000);
+                return false;
+            }
+            if (productBarCode == null || productBarCode == "") {
+                hudMsg('error', 'Please Enter BarCode', 3000);
+                return false;
+            }
+            if (productName == null || productName == "") {
+                hudMsg('error', 'Please Enter Product Name', 3000);
+                return false;
+            }
+            if (productPrice == null || productPrice == "") {
+                hudMsg('error', 'Please Enter Product Price', 3000);
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1587/Product/Create",
+                data: "brandID=" + brandID + "&productBarCode=" + productBarCode + "&productName=" + productName + "&productPrice=" + productPrice,
+                success: function (data) {
+
+                    //alert("Data Saved Successfully");
+                    hudMsg('success', 'Record Saved successfully', 3000);
+                    $("#brandName").val("");
+
+                }
+            });
+
+
+        });
+
+
+
+    });
+
+
+</script>
+
+

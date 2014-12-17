@@ -1,0 +1,93 @@
+H:\vs\POSManagementSystem\POSManagementSystem\bin\POSManagementSystem.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\POSManagementSystem.pdb
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Antlr3.Runtime.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.AspNet.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.Core.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.Consumer.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\EntityFramework.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.WebPages.OAuth.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Newtonsoft.Json.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Net.Http.Formatting.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Helpers.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Http.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Http.WebHost.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Mvc.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Optimization.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Razor.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Deployment.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Razor.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\WebGrease.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\WebMatrix.Data.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\WebMatrix.WebData.dll
+H:\vs\POSManagementSystem\POSManagementSystem\bin\EntityFramework.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Newtonsoft.Json.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Net.Http.Formatting.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Helpers.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Http.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Http.WebHost.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Mvc.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.Razor.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Deployment.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Razor.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\WebMatrix.Data.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.WebPages.OAuth.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\WebMatrix.WebData.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.AspNet.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.Core.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.Consumer.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.xml
+H:\vs\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+H:\vs\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.dll
+H:\vs\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.pdb
+H:\vs\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.csprojResolveAssemblyReference.cache
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\POSManagementSystem.dll.config
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\POSManagementSystem.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\POSManagementSystem.pdb
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Antlr3.Runtime.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.AspNet.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.Core.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\EntityFramework.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Newtonsoft.Json.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Helpers.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Mvc.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Optimization.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Razor.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Deployment.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Razor.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\WebGrease.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\WebMatrix.Data.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\WebMatrix.WebData.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\EntityFramework.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Newtonsoft.Json.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Helpers.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Mvc.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.Razor.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Deployment.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\System.Web.WebPages.Razor.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\WebMatrix.Data.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\WebMatrix.WebData.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.AspNet.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.Core.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OAuth.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.csprojResolveAssemblyReference.cache
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.dll
+E:\destop document\v2 - Copy\POSManagementSystem\POSManagementSystem\obj\Debug\POSManagementSystem.pdb

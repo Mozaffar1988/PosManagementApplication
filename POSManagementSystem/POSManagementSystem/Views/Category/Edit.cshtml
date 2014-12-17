@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shdw_box">    
+<section id="content">
+  
+@model POSManagementSystem.Models.Category
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Category Edit</h2>
+        
+        <table>
+            <tr>
+            <td>
+                <label>Category Name :</label><br />
+                @Html.HiddenFor(model => model.categoryID)
+	       @Html.EditorFor(model => model.categoryName)
+            @Html.ValidationMessageFor(model => model.categoryName)
+	       <span class="note">*</span>
+            </td>
+            </tr>
+            
+            
+        </table>
+    
+      
+       <input type="submit" class="submit" id="category_update"  value="Update" />
+    
+    <div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+   	
+    
+  
+
+     </section>		
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#category_update").click(function () {
+            var categoryID = $("#categoryID").val();
+            var categoryName = $("#categoryName").val();
+
+            if (categoryName == null || categoryName == "") {
+                hudMsg('error', 'Category Missing', 3000);
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1587/Category/Edit",
+                data: "categoryID=" + categoryID + "&categoryName=" + categoryName,
+                success: function (data) {
+
+                    //alert("Data Saved Successfully");
+                    hudMsg('success', 'Data Updated successfully', 3000);
+
+                }
+            });
+
+
+        });
+
+
+
+    });
+
+
+</script>
+
+
